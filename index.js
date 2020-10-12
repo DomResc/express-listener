@@ -1,8 +1,8 @@
-import { port } from './config/env.config.js'
+const port = require('./config/env.config').port
+const routesConfig = require('./src/routes/log.route').routesConfig
 
-import express from 'express'
-import { json } from 'body-parser'
-import { routesConfig } from './src/routes/log.route'
+const json = require('body-parser')
+const express = require('express')
 
 const app = express()
 
