@@ -1,10 +1,13 @@
+// General require
 const port = require('./config/env.config').port
-const routesConfig = require('./src/routes/log.route').routesConfig
 
-const json = require('body-parser')
+// Express module
 const express = require('express')
-
+const bodyParser = require('body-parser')
 const app = express()
+
+// Express route
+const LogRoute = require('./src/routes/log.route')
 
 app.use(function (req, res, next) {
   res.header('Access-Control-Allow-Origin', '*')
@@ -22,10 +25,10 @@ app.use(function (req, res, next) {
   }
 })
 
-app.use(json())
+app.use(bodyParser.json())
 
-routesConfig(app)
+LogRoute.routesConfig(app)
 
 app.listen(port, function () {
-  console.log('Porta usata: %s', port)
+  console.log('Port: %s', port)
 })
